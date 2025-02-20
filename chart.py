@@ -43,6 +43,14 @@ def analyze_emotions(subtitles):
     subtitle_emotions = []
     for number, start_time, end_time, text in subtitles:
         result = classifier(text, top_k=None)  # Get all emotion scores
+
+        # Modify "neutral" scores and capitalize label
+        for emotion in result:
+            emotion['label'] = emotion['label'].capitalize()
+            if emotion['label'] == "Neutral":
+                emotion['score'] = 1 - emotion['score']
+                emotion['label'] = "Emotional Intensity"
+
         subtitle_emotions.append((number, start_time, end_time, text, result))
     return subtitle_emotions
 
@@ -66,17 +74,17 @@ def plot_smoothed_emotions(subtitle_emotions, total_duration, window_size=10, ti
 
     # Define consistent colors for each emotion
     emotion_colors = {
-        "joy": "gold",
-        "sadness": "blue",
-        "anger": "red",
-        "fear": "purple",
-        "surprise": "green",
-        "disgust": "brown",
-        "neutral": "gray"
+        "Joy": "gold",
+        "Sadness": "blue",
+        "Anger": "red",
+        "Fear": "purple",
+        "Surprise": "green",
+        "Disgust": "brown",
+        "Emotional Intensity": "black"
     }
 
-    # Sort labels: "neutral" first, then alphabetical order of remaining emotions
-    sorted_labels = ["neutral"] + sorted([label for label in emotion_scores if label != "neutral"])
+    # Sort labels: "Emotional Intensity" first, then alphabetical order of remaining emotions
+    sorted_labels = ["Emotional Intensity"] + sorted([label for label in emotion_scores if label != "Emotional Intensity"])
 
     # Plot each emotion
     plt.figure(figsize=(12, 6))
@@ -108,4 +116,3 @@ if __name__ == "__main__":
     subtitle_emotions = analyze_emotions(subtitles)
     pprint(subtitle_emotions)
     plot_smoothed_emotions(subtitle_emotions, total_duration, window_size=100, title=title)
-
