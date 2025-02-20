@@ -30,5 +30,6 @@ The analysis is powered by the j-hartmann/emotion-english-distilroberta-base mod
 ### 25 Movies top movies combined
 ![25-best-movies](https://github.com/user-attachments/assets/0440372a-bf48-4bfd-a0e4-157cbe1e1e2a)
 
-### Interstellar
-![interstellar](https://github.com/user-attachments/assets/b0a36400-359b-4286-9a64-3750a54446fc)
+### Interstellar (2014)
+![interstellar](https://github.com/user-attachments/assets/bb16757a-e071-4f0f-b059-4bcb829dbd46)
+
