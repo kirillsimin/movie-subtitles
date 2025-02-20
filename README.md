@@ -15,11 +15,12 @@ The analysis is powered by the j-hartmann/emotion-english-distilroberta-base mod
    ```bash
    pip install -r requirements.txt
    ```
-2. Run `chart.py` with an `.srt` subtitle file as input:
+2. Download `.srt` files into the `data/` folder. For example from https://www.opensubtitles.org
+3. Run `chart.py` with an `.srt` subtitle file as input:
    ```bash
    python chart.py ./data/subtitles.srt
    ```
-3. Run `heatmap.py` to generate a heatmap of emotional intensity across movies in `./data` folder:
+4. Run `heatmap.py` to generate a heatmap of emotional intensity across movies in `./data` folder:
    ```bash
    python heatmap.py
    ```
